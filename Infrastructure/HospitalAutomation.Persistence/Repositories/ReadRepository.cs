@@ -26,7 +26,7 @@ namespace HospitalAutomation.Persistence.Repositories
         => Table;
 
         public async Task<T> GetSingleAsync(string id)
-        => await Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
+        => await Table.FindAsync(Guid.Parse(id));
 
         public IQueryable<T> GetWhere(Expression<Func<T, bool>> method)
         => Table.Where(method);

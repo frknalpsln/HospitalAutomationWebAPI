@@ -13,6 +13,7 @@ namespace HospitalAutomation.Application.Repositories
         bool Remove (T model);
         Task<bool> RemoveAsync(string id);
         bool Update (T model);
+        Task<int> SaveAsync();
 
     }
 }

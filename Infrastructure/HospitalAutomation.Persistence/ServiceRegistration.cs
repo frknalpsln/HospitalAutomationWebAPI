@@ -1,4 +1,10 @@
-﻿using HospitalAutomation.Persistence.Contexts;
+﻿using HospitalAutomation.Application.Repositories.AppointmentRepo;
+using HospitalAutomation.Application.Repositories.DoctorRepo;
+using HospitalAutomation.Application.Repositories.PatientRepo;
+using HospitalAutomation.Persistence.Contexts;
+using HospitalAutomation.Persistence.Repositories.AppointmentRepo;
+using HospitalAutomation.Persistence.Repositories.DoctorRepo;
+using HospitalAutomation.Persistence.Repositories.PatientRepo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -12,10 +18,15 @@ namespace HospitalAutomation.Persistence
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceServices(this IServiceCollection services)
+        public static void AddPersistenceServices(this IServiceCollection services )
         {
             services.AddDbContext<HospitalAutomationDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
-
+            services.AddScoped<IPatientReadRepository, PatientReadRepository>();
+            services.AddScoped<IPatientWriteRepository, PatientWriteRepository>();
+            services.AddScoped<IDoctorReadRepository, DoctorReadRepository>();
+            services.AddScoped<IDoctorWriteRepository, DoctorWriteRepository>();
+            services.AddScoped<IAppointmentReadRepository, AppointmentReadRepository>();
+            services.AddScoped<IAppointmentWriteRepository, AppointmentWriteRepository>();
         }
     }
 }

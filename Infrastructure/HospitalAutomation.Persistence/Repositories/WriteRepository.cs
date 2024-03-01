@@ -41,6 +41,9 @@ namespace HospitalAutomation.Persistence.Repositories
             return Remove(getId);
         }
 
+        public async Task<int> SaveAsync()
+        => await _context.SaveChangesAsync();
+
         public bool Update(T model)
         {
            EntityEntry<T> entityEntry = Table.Update(model);
