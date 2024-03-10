@@ -1,4 +1,5 @@
-﻿using HospitalAutomation.Application.Repositories.AppointmentRepo;
+﻿using HospitalAutomation.Application.Repositories;
+using HospitalAutomation.Application.Repositories.AppointmentRepo;
 using HospitalAutomation.Domain.Entities;
 using HospitalAutomation.Persistence.Contexts;
 using System;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace HospitalAutomation.Persistence.Repositories.AppointmentRepo
 {
-    public class AppointmentReadRepository : ReadRepository<Appointment>, IAppointmentReadRepository
+    public class ProtocolWriteRepository : WriteRepository<Protocol>, IProtocolWriteRepository
     {
-        public AppointmentReadRepository(HospitalAutomationDbContext context) : base(context)
+        public ProtocolWriteRepository(HospitalAutomationDbContext context) : base(context)
         {
         }
     }

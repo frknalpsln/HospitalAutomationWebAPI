@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace HospitalAutomation.Domain.Entities
 {
-    public class Doctor : BaseEntity
+    public class InsuranceType : BaseEntity
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        
-        public Guid PoliclinicId { get; set; }
-        public Policlinic Policlinic { get; set; }
+        public string Definition { get; set; }       
+        public bool Worker { get; set; }
+        public bool Retired { get; set; }
+        public bool SskStaff { get; set; }
+        public bool Other {  get; set; }
 
         public ICollection<Patient> Patients { get; set; }
-        public ICollection<Protocol> Protocols { get; set; }
+
 
     }
 }

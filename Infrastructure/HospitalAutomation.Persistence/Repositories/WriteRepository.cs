@@ -35,9 +35,10 @@ namespace HospitalAutomation.Persistence.Repositories
             return entityEntry.State == EntityState.Deleted;
         }
 
-        public async Task<bool> RemoveAsync(string id)
+        public  async Task<bool> RemoveAsync(string id)
         {
-          T getId = await  Table.FirstOrDefaultAsync(data => data.Id == Guid.Parse(id));
+          T getId = await  Table.FindAsync(Guid.Parse(id));
+
             return Remove(getId);
         }
 

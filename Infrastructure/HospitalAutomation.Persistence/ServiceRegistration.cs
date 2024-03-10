@@ -25,8 +25,8 @@ namespace HospitalAutomation.Persistence
             services.AddScoped<IPatientWriteRepository, PatientWriteRepository>();
             services.AddScoped<IDoctorReadRepository, DoctorReadRepository>();
             services.AddScoped<IDoctorWriteRepository, DoctorWriteRepository>();
-            services.AddScoped<IAppointmentReadRepository, AppointmentReadRepository>();
-            services.AddScoped<IAppointmentWriteRepository, AppointmentWriteRepository>();
+            services.AddScoped<IProtocolReadRepository, ProtocolReadRepository>();
+            services.AddScoped<IProtocolWriteRepository, ProtocolWriteRepository>();
         }
     }
 }

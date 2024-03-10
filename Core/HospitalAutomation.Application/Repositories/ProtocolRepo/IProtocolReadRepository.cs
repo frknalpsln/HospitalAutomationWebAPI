@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalAutomation.Application.Repositories.AppointmentRepo
 {
-    public interface IAppointmentWriteRepository : IWriteRepository<Appointment>
+    public interface IProtocolReadRepository : IReadRepository<Protocol>
     {
     }
 }
