@@ -21,6 +21,7 @@ namespace HospitalAutomation.Domain.Entities
         public Doctor Doctor { get; set; }
         public Patient Patient { get; set; }
 
+        public InsuranceType InsuranceType { get; set; }
         public TypeOfTreatment TypeOfTreatment { get; set; }
         public ProvisionType ProvisionType { get; set; }
         public TrackingType TrackingType { get; set; }

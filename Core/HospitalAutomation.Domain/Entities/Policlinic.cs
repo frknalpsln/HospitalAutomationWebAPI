@@ -10,5 +10,8 @@ namespace HospitalAutomation.Domain.Entities
     public class Policlinic : BaseEntity
     {
         public string Type { get; set; }
+        
+        public ICollection<Patient> Patients { get; set; }
+        public ICollection<Doctor> Doctors { get; set; }
     }
 }
