@@ -11,14 +11,15 @@ namespace HospitalAutomation.Domain.Entities
     public class Patient : BaseEntity
     {
         public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Gender { get; set; }
-        public int BirthDate { get; set; }
+        public string Surname { get; set; }       
+        public DateOnly BirthDate { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
-        public long IdentificationNumber { get; set; }
-        public string BloodGroup { get; set; }
-        public string Image { get; set; }
+        public long IdentificationNumber { get; set; }       
+        public string? Image { get; set; }
+
+        public BloodGroupType BloodGroupType { get; set; }
+        public GenderType GenderType { get; set; }
 
         public ICollection<Doctor> Doctors { get; set; }
         public ICollection<Protocol> Protocols { get; set; }

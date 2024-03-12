@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalAutomation.Domain.Enums
 {
-    public enum TypeOfTreatment
+    public enum TreatmentType
     {
         OnFoot = 1,
         LyingDown,
