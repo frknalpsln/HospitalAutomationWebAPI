@@ -12,7 +12,6 @@ namespace HospitalAutomation.Domain.Entities
     {
 
         public string Definition { get; set; }
-        public string Department { get; set; }
 
         public Guid DoctorId { get; set; }
         public Guid PatientId { get; set; }
