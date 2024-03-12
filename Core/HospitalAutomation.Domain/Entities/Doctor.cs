@@ -12,7 +12,7 @@ namespace HospitalAutomation.Domain.Entities
         public string Name { get; set; }
         public string Surname { get; set; }     
 
-        public Policlinic PoliclinicId { get; set; }
+        public Guid PoliclinicId { get; set; }
         public Policlinic Policlinic { get; set; }
 
         public ICollection<Patient> Patients { get; set; }
