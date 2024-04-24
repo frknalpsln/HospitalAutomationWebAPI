@@ -3,6 +3,7 @@ using System;
 using HospitalAutomation.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HospitalAutomation.Persistence.Migrations
 {
     [DbContext(typeof(HospitalAutomationDbContext))]
-    partial class HospitalAutomationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240327130511_mig6")]
+    partial class mig6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,6 +59,10 @@ namespace HospitalAutomation.Persistence.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("IdentificationNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("text");
 

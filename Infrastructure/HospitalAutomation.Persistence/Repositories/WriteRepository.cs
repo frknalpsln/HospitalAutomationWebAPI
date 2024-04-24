@@ -37,7 +37,7 @@ namespace HospitalAutomation.Persistence.Repositories
 
         public  async Task<bool> RemoveAsync(string id)
         {
-          T getId = await  Table.FindAsync(Guid.Parse(id));
+          T getId = await  Table.FirstOrDefaultAsync(d => d.Id == Guid.Parse(id));
 
             return Remove(getId);
         }

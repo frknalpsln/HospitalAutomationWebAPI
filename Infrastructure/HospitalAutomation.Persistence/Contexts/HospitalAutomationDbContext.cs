@@ -18,7 +18,6 @@ namespace HospitalAutomation.Persistence.Contexts
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Protocol> Protocols { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<Policlinic> Policlinics { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -30,8 +29,9 @@ namespace HospitalAutomation.Persistence.Contexts
                 _ = data.State switch
                 {
                     EntityState.Added => data.Entity.CreatedDate = DateTime.UtcNow,
-                    EntityState.Modified => data.Entity.UpdatedDate = DateTime.UtcNow
-                };
+                    EntityState.Modified => data.Entity.UpdatedDate = DateTime.UtcNow,
+                    _ => DateTime.UtcNow
+                } ;
             }
             return await base.SaveChangesAsync(cancellationToken);
         }

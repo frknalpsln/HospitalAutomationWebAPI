@@ -1,13 +1,10 @@
 ﻿using HospitalAutomation.Application.Repositories.AppointmentRepo;
 using HospitalAutomation.Application.Repositories.DoctorRepo;
 using HospitalAutomation.Application.Repositories.PatientRepo;
-using HospitalAutomation.Application.Repositories.PoliclinicRepo;
 using HospitalAutomation.Persistence.Contexts;
 using HospitalAutomation.Persistence.Repositories.AppointmentRepo;
 using HospitalAutomation.Persistence.Repositories.DoctorRepo;
 using HospitalAutomation.Persistence.Repositories.PatientRepo;
-using HospitalAutomation.Persistence.Repositories.PoliclinicRepo;
-using HospitalAutomation.Persistence.Repositories.PoliclinicRepor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -30,8 +27,7 @@ namespace HospitalAutomation.Persistence
             services.AddScoped<IDoctorWriteRepository, DoctorWriteRepository>();
             services.AddScoped<IProtocolReadRepository, ProtocolReadRepository>();
             services.AddScoped<IProtocolWriteRepository, ProtocolWriteRepository>();
-            services.AddScoped<IPoliclinicReadRepository, PoliclinicReadRepository>();
-            services.AddScoped<IPoliclinicWriteRepository, PoliclinicWriteRepository>();
+         
         }
     }
 }

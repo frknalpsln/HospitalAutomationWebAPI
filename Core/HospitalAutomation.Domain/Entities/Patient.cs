@@ -15,8 +15,7 @@ namespace HospitalAutomation.Domain.Entities
         public DateOnly BirthDate { get; set; }
         public string FatherName { get; set; }
         public string MotherName { get; set; }
-        public long IdentificationNumber { get; set; }       
-        public string? Image { get; set; }
+        public string IdentificationNumber { get; set; }       
 
         public BloodGroupType BloodGroupType { get; set; }
         public GenderType GenderType { get; set; }

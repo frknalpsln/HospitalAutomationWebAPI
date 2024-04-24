@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\HospitalAutomation.Application\HospitalAutomation.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\HospitalAutomation.Infrastructure\HospitalAutomation.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\HospitalAutomation.Persistence\HospitalAutomation.Persistence.csproj" />
   </ItemGroup>
 

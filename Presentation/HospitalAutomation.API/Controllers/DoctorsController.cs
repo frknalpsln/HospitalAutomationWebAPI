@@ -1,4 +1,6 @@
-﻿using HospitalAutomation.Application.ViewModels.Doctors;
+﻿using HospitalAutomation.Application.Repositories.DoctorRepo;
+using HospitalAutomation.Application.RequestParameters;
+using HospitalAutomation.Application.ViewModels.Doctors;
 using HospitalAutomation.Domain.Entities;
 using HospitalAutomation.Persistence.Repositories.DoctorRepo;
 using Microsoft.AspNetCore.Http;
@@ -10,21 +12,37 @@ namespace HospitalAutomation.API.Controllers
     [ApiController]
     public class DoctorsController : ControllerBase
     {
-        private readonly DoctorReadRepository _doctorReadRepository;
-        private readonly DoctorWriteRepository _doctorWriteRepository;
+        private readonly IDoctorReadRepository _doctorReadRepository;
+        private readonly IDoctorWriteRepository _doctorWriteRepository;
 
-        public DoctorsController(DoctorWriteRepository doctorWriteRepository, DoctorReadRepository doctorReadRepository)
+
+        public DoctorsController(IDoctorWriteRepository doctorWriteRepository, IDoctorReadRepository doctorReadRepository)
         {
             _doctorWriteRepository = doctorWriteRepository;
             _doctorReadRepository = doctorReadRepository;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] Pagination pagination)
         {
-            return Ok( _doctorReadRepository.GetAll(false));
+            var totalCount = _doctorReadRepository.GetAll(false).Count();
+            var doctors = _doctorReadRepository.GetAll(false).Skip(pagination.Page * pagination.Size).Take(pagination.Size).Select(d => new
+            {
+               d.Name,
+               d.Surname,
+               d.IdentificationNumber,
+               d.CreatedDate,
+               d.UpdatedDate
+
+            });
+            return Ok(new
+            {
+                totalCount,
+                doctors
+            });
         }
-        [HttpGet("id")]
+
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
             return Ok(await _doctorReadRepository.GetSingleAsync(id, false));
@@ -37,14 +55,16 @@ namespace HospitalAutomation.API.Controllers
             {
                 Name = model.Name,
                 Surname = model.Surname,
+                IdentificationNumber = model.IdentificationNumber
             });
             await _doctorWriteRepository.SaveAsync();
             return Ok();
         }
+        [HttpDelete("{id}")]
 
-        [HttpDelete("id")]
         public async Task<IActionResult> Delete(string id)
         {
+
             await _doctorWriteRepository.RemoveAsync(id);
             await _doctorWriteRepository.SaveAsync();
             return Ok();

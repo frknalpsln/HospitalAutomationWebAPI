@@ -3,6 +3,7 @@ using System;
 using HospitalAutomation.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HospitalAutomation.Persistence.Migrations
 {
     [DbContext(typeof(HospitalAutomationDbContext))]
-    partial class HospitalAutomationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240322001412_mig4")]
+    partial class mig4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +58,10 @@ namespace HospitalAutomation.Persistence.Migrations
                     b.Property<int>("GenderType")
                         .HasColumnType("integer");
 
-                    b.Property<string>("IdentificationNumber")
+                    b.Property<long>("IdentificationNumber")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -100,9 +106,8 @@ namespace HospitalAutomation.Persistence.Migrations
                     b.Property<int>("GenderType")
                         .HasColumnType("integer");
 
-                    b.Property<string>("IdentificationNumber")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<long>("IdentificationNumber")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("MotherName")
                         .IsRequired()

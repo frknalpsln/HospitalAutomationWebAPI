@@ -15,5 +15,7 @@ namespace HospitalAutomation.Application.Repositories
         bool Update (T model);
         Task<int> SaveAsync();
 
+        
+
     }
 }
